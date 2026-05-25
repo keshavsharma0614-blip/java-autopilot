@@ -20,13 +20,7 @@ public class RuntimeAgent {
         Instrumentation inst = ByteBuddyAgent.install();
 
         // We can use AgentBuilder here to intercept method calls for data tracking.
-        new AgentBuilder.Default()
-            .type(ElementMatchers.any())
-            .transform((builder, typeDescription, classLoader, module) -> {
-                // Future implementation: Intercept global variable updates
-                return builder;
-            })
-            .install();
+        // Transformation logic will be added in Phase 2.
 
         System.out.println("[JATP-Agent] Agent successfully attached.");
         return inst;

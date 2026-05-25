@@ -7,6 +7,8 @@ plugins {
 dependencies {
     implementation(project(":jatp-ai"))
     implementation(project(":jatp-core"))
+    implementation(project(":jatp-automation"))
+    implementation(project(":jatp-inspector"))
 
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")

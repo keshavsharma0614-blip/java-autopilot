@@ -44,7 +44,7 @@ public class StaticAnalysisEngine {
         for (FieldDeclaration field : classDec.getFields()) {
             String type = field.getElementType().asString();
             if (isUiComponent(type)) {
-                String name = field.getVariable(0).getName();
+                String name = field.getVariable(0).getNameAsString();
                 widgets.add(new Widget(
                     name,
                     type,

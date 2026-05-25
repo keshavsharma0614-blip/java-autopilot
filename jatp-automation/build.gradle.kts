@@ -7,7 +7,7 @@ dependencies {
     implementation(project(":jatp-inspector"))
 
     // Automation frameworks
-    implementation("org.swtbot:swtbot:0.1.0") // Placeholder, will need exact coordinates for RCPTT/SikuliX
+    // implementation("org.swtbot:swtbot:0.1.0") // Placeholder, will need exact coordinates for RCPTT/SikuliX
 
     // Vision/OCR
     implementation("org.openpnp:opencv:4.9.0-0")

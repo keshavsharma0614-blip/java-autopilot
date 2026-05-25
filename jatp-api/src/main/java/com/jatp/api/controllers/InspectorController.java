@@ -1,7 +1,8 @@
 package com.jatp.api.controllers;
 
 import com.jatp.core.model.Widget;
-import com.jatp.inspector.runtime.SwtTreeInspector;
+import com.jatp.core.spi.IRuntimeInspector;
+import com.jatp.inspector.runtime.MockSwtTreeInspector;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.http.ResponseEntity;
 
@@ -15,7 +16,8 @@ import java.util.concurrent.CompletableFuture;
 @RequestMapping("/api/inspector")
 public class InspectorController {
 
-    private final SwtTreeInspector swtTreeInspector = new SwtTreeInspector();
+    // Using the Mock inspector for the MVP build
+    private final IRuntimeInspector runtimeInspector = new MockSwtTreeInspector();
 
     /**
      * Dumps the current SWT widget tree of the running application.
@@ -23,7 +25,7 @@ public class InspectorController {
      */
     @GetMapping("/widgets")
     public CompletableFuture<ResponseEntity<List<Widget>>> getWidgets() {
-        return swtTreeInspector.dumpWidgetTree()
+        return runtimeInspector.dumpWidgetTree()
                 .thenApply(ResponseEntity::ok);
     }
 
@@ -33,7 +35,6 @@ public class InspectorController {
      */
     @GetMapping("/current-screen")
     public ResponseEntity<String> getCurrentScreen() {
-        // In a real implementation, this would query the RuntimeAgent/StateMonitor
-        return ResponseEntity.ok("S1_DEFAULT");
+        return ResponseEntity.ok(runtimeInspector.getCurrentScreenId());
     }
 }
