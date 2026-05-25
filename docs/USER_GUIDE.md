@@ -19,6 +19,15 @@ JavaAutoPilot (JATP) provides a set of tools to analyze Java desktop application
 - Java 17+ (JDK)
 - Gradle (or use the provided `./gradlew`)
 
+### Configuration
+Before running the server, you must configure the AI provider and the source code path.
+
+1. **API Key**: Set the `AI_API_KEY` environment variable.
+   ```bash
+   export AI_API_KEY="your-api-key-here"
+   ```
+2. **Source Path**: Edit `jatp-api/src/main/resources/application.yml` and set `jatp.analyzer.source-path` to the absolute path of your Java project.
+
 ### Building the Project
 Run the following command from the project root:
 ```bash
